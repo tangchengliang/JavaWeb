@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>框架</title>
+</head>
+<!--        <frameset cols="25%,75%">-->
+<!--            <frame src="frame_a.htm" noresize="noresize">-->
+<!--            <frame src="frame_b.htm">-->
+<!--        </frameset>-->
+<body>
+<h3>1.表格的设计</h3>
+<table border="1">              <!--表格边界 -->
+    <caption>测试标题</caption>
+    <tr>                        <!--表格表头 -->
+        <th>First Heading</th>
+        <th>Other Heading</th>
+    </tr>
+    <tr>
+        <td>(1,1)</td>
+        <td>(1,2)</td>
+    </tr>
+    <tr>
+        <td>(2,1)</td>
+        <td>&nbsp;</td>   <!--空的表格，要添加 空 -->
+    </tr>
+</table>
+
+<h3>2.表单和输入</h3>
+<p style="text-indent: 2em">表单元素是允许用户在表单中（比如：文本域、下拉列表、单选框、复选框等等）输入信息的元素。</p>
+<h4>2.1文本输入</h4>
+<form>
+    First name:<input type="text" name="firstname">
+    Last name:<input type="text" name="lastname"><br/>
+</form>
+<h4>2.2单选按钮 radio 同一个name</h4>
+<form>
+    <label>
+        <input type="radio" name="sex" value="male">
+    </label> Male
+    <label>
+        <input type="radio" name="sex" value="female">
+    </label> Female
+    <label>
+        <input type="radio" name="sex" value="double">
+    </label> double
+</form>
+<h4>2.3多选按钮 checkbox 不同的name</h4>
+<form>
+    <label>
+        <input type="checkbox" name="apple" >
+    </label> Apple
+    <label>
+        <input type="checkbox" name="banana" >
+    </label> Banana
+    <label>
+        <input type="checkbox" name="pick" >
+    </label> Pick
+</form>
+<h4>2.4动作属性 Action</h4>
+<form name="input" action="html_form_action.asp" method="get">
+    Username:
+    <label>
+        <input type="text" name="user">
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

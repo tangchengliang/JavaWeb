@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS基本语法</title>
+    <style type="text/css">
+        /* 标签样式表*/
+        p{
+            color: crimson;
+        }
+        /* 类样式*/
+        .f20{
+            color: blue;
+            font-size: 20px;
+        }
+        /* ID样式*/
+        #id_test{
+            font-size: 15px;
+            color: blueviolet;
+            font-style: italic;
+            font-weight: bolder;
+            font-family: 楷体,serif;
+        }
+        /* 组合样式 */
+        div p{
+            color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <h2>1.css的作用</h2>
+    <p><font color="black">同一页面显示的风格，相当于一个方法，例如字体颜色，大小，段落等，写在style里，调用即可</font></p>
+    <p>例如，段落标签为红色</p>
+    <p class="f20">例如，class标签为蓝色，字体变大</p>
+    <p id="id_test">例如，id 标签为紫色，字体变小, 为楷体</p>
+    <div>
+        <p>组合样式，颜色是绿色</p>
+    </div>
+</body>
+</html>
