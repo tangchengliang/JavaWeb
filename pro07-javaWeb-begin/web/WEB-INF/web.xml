@@ -17,6 +17,6 @@
         3. 在servlet-mapping中，找到servlet-name   AddServlet
         4. 在servlet中找到同样的name   AddServlet
         5. 找到AddServlet中的class ->com.tcl.servlets.AddServlet
-        6. 用户发送（method=post）请求
+        6. 用户发送（method=post）请求  ，因此tomcat会执行AddServlet中的doPost方法
     -->
 </web-app>

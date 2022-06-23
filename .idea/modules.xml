@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/pro07-javaWeb-begin/pro07-javaWeb-begin.iml" filepath="$PROJECT_DIR$/pro07-javaWeb-begin/pro07-javaWeb-begin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pro08-javaweb-servlet/pro08-javaweb-servlet.iml" filepath="$PROJECT_DIR$/pro08-javaweb-servlet/pro08-javaweb-servlet.iml" />
     </modules>
   </component>
 </project>
