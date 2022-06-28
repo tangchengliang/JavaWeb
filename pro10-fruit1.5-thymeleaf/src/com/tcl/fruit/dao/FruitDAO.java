@@ -16,4 +16,10 @@ public interface FruitDAO {
 
     // 修改指定的库存记录
     void updateFruit(Fruit fruit);
+
+    // 删除
+    void delFruit(Integer fid);
+
+    // 新增
+    void addFruit(Fruit fruit);
 }

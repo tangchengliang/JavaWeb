@@ -1,10 +1,6 @@
 *{
 	color: threeddarkshadow;
 }
-a{
-	/*超链接无下划线*/
-	text-decoration: none;
-}
 body{
 	margin:0;
 	padding:0;
@@ -62,16 +58,4 @@ div{
 
 .f30{
 	font-size: 30px;
-}
-
-.table_add{
-	border:0px solid red;
-	width: 60%;
-	margin-left: 20%;
-	text-align: right;
-}
-
-.table_add_a{
-	border: 0px solid blue;
-	margin-bottom: 4px
 }
