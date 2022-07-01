@@ -1,0 +1,45 @@
+1.再次学习Servlet的初始化方法
+    1）Servlet声明周期：实例化，初始化，服务，销毁
+    2）Servlet中的初始化方法：init(), init(config)
+
+    如果需要在Servlet初始化时做一些准备工作，name要重写init方法
+        可以通过如下，获取初始设置的数据      -获取config对象：
+        1)配置web.xml文件
+           <init-param>
+                <param-name>hello</param-name>
+                <param-value>word</param-value>
+            </init-param>
+        2) 注解方式
+            @WebServlet(urlPatterns = {"/demo01"},
+                        initParams = {
+                            @WebInitParam(name="hello", value="word"),
+                            @WebInitParam(name="uname", value="jim")
+                        }
+                        )
+2.学习Servlet中ServletContext和<context-param>
+    1)获取ServletContext，有很多方法
+        在初始化中：   ServletContext servletContext = getServletContext();
+        在服务中，也可以通过request请求获取
+        request.getServletContext(); session.get
+    2) 获取初始化值
+        servletContext.getInitParameter("contextConfigLocation");
+
+3.什么事业务层
+    1）Model1和Model2
+    MVC: Model（模型）, View（视图）, Controller（控制器）
+    视图层：用于做数据展示以及和用户交互的一个界面
+    控制层：能够接收客户端的请求，具体的业务功能还是需要借助模型组件来完成
+    模型层：如pojo/vo(value object)，有业务模型组件，有访问层组件
+        1）pojo/vo: 值对象
+        2) DAO: 数据访问对象
+        3) BO : 业务对象（Business Object）
+
+    区分业务对象和数据访问对象：
+        1）DAO中的方法都是单精度方法；即一个方法只考虑一个操作，如添加，查询
+        2）BO中的方法属于业务方法，实际业务比较复杂，因此业务方法的粒度是比较粗的
+        注册这个功能：属于业务功能---->业务方法
+        包含多个DAO方法，需要多个DAO方法的组合调用，从而完成注册功能
+            -检查用户名是否被注册：DAO-->select
+            -用户表新增一个用户：  DAO-->insert
+            -删除一个用户：       DAO-->delete
+            ...
