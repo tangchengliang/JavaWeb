@@ -3,6 +3,7 @@ package com.tcl.fruit.service.impl;
 import com.tcl.fruit.service.FruitService;
 import com.tcl.fruit.dao.FruitDAO;
 import com.tcl.fruit.pojo.Fruit;
+import com.tcl.myssm.basedao.ConnUtil;
 
 import java.util.List;
 
@@ -11,12 +12,18 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public List<Fruit> getFruitList(String keyword, Integer page) {
+        System.out.println("getFruitList -> "+ ConnUtil.getConnection());
         return fruitDAO.getFruitList(page, keyword);
     }
 
     @Override
     public void addFruit(Fruit fruit) {
         fruitDAO.addFruit(fruit);
+
+        // 现在模拟回滚报错，下面报错，看上面能否回滚
+        Fruit fruit2 = fruitDAO.getFruitByFid(5);
+        fruit2.setFcount(99);
+        fruitDAO.updateFruit(fruit2);
     }
 
     @Override
@@ -31,6 +38,7 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public Integer getPageCount(String keyword) {
+        System.out.println("getPageCount -> "+ ConnUtil.getConnection());
         int count = fruitDAO.getFruitCount(keyword);
         return (count+5-1)/5 ;
     }

@@ -42,6 +42,7 @@ review:
    配置Filter，可以用注解@WebFilter，也可以使用xml文件 <filter> <filter-mapping>
 3) Filter在配置时，和servlet一样，也可以配置通配符，例如 @WebFilter("*.do")表示拦截所有以.do结尾的请求
 4) 过滤器链
+    每个过滤器，完成自己的工作
    1）执行的顺序依次是： A B C demo03 C2 B2 A2
    2）如果采取的是注解的方式进行配置，那么过滤器链的拦截顺序是按照全类名的先后顺序排序的
    3）如果采取的是xml的方式进行配置，那么按照配置的先后顺序进行排序
