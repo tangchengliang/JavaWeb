@@ -1,7 +1,7 @@
 package com.tcl.myssm.myspringmvc;
 
-import com.tcl.myssm.io.BeanFactory;
-import com.tcl.myssm.io.ClassPathXmlApplicationContext;
+import com.tcl.myssm.ioc.BeanFactory;
+import com.tcl.myssm.ioc.ClassPathXmlApplicationContext;
 import com.tcl.myssm.util.StringUtil;
 
 import javax.servlet.*;
@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -24,7 +23,17 @@ public class DispatcherServlet extends ViewBaseServlet {
 
     public void init() throws ServletException {
         super.init();
-        beanFactory = new ClassPathXmlApplicationContext();
+        // 之前在此主动创建，IOC容器
+        // 现在优化为从application作用域获取
+//        beanFactory = new ClassPathXmlApplicationContext();
+        ServletContext application = getServletContext();
+        Object beanFactoryObj = application.getAttribute("beanFactory");
+        if(beanFactoryObj!=null){
+            beanFactory = (BeanFactory)beanFactoryObj;
+        }else {
+            throw new RuntimeException("IOC容器获取失败！");
+        }
+
     }
 
     @Override
@@ -96,8 +105,9 @@ public class DispatcherServlet extends ViewBaseServlet {
                     }
                 }
             }
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new DispatcherServletException("DispatcherServlet service 报错了");
         }
     }
 }

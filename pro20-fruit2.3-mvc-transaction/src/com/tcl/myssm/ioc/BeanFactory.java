@@ -1,4 +1,4 @@
-package com.tcl.myssm.io;
+package com.tcl.myssm.ioc;
 
 public interface BeanFactory {
 

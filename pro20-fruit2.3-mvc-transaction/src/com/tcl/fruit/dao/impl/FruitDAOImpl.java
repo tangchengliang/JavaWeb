@@ -8,6 +8,7 @@ import java.util.List;
 
 public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
 
+
     @Override
     public List<Fruit> getFruitList() {
         return super.executeQuery("select * from fruit");
@@ -32,7 +33,8 @@ public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
 
     @Override
     public void updateFruit(Fruit fruit) {
-        String sql = "update fruit set fname = ?, price = ?, fcount = ?, remark = ? where fid = ?";
+        // todo sql 语句故意写错,update - > updat
+        String sql = "updat fruit set fname = ?, price = ?, fcount = ?, remark = ? where fid = ?";
         super.executeUpdate(sql, fruit.getFname(), fruit.getPrice(), fruit.getFcount(), fruit.getRemark(), fruit.getFid());
     }
 

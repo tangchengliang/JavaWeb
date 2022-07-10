@@ -22,7 +22,7 @@ public class FruitServiceImpl implements FruitService {
 
         // 现在模拟回滚报错，下面报错，看上面能否回滚
         Fruit fruit2 = fruitDAO.getFruitByFid(5);
-        fruit2.setFcount(99);
+        fruit2.setFcount(102);
         fruitDAO.updateFruit(fruit2);
     }
 

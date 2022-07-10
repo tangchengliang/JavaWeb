@@ -48,7 +48,7 @@ review:
    3）如果采取的是xml的方式进行配置，那么按照配置的先后顺序进行排序
 
 2. 事务管理
-   1) 涉及到的组件：
+   1) 涉及到的组件：---->保证原子性
      - OpenSessionInViewFilter
      - TransactionManager
      - ThreadLocal

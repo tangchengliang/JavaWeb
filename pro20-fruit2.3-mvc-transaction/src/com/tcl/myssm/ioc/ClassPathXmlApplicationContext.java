@@ -1,5 +1,6 @@
-package com.tcl.myssm.io;
+package com.tcl.myssm.ioc;
 
+import com.tcl.myssm.util.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,10 +19,18 @@ import java.util.Map;
 public class ClassPathXmlApplicationContext implements BeanFactory{
 
     Map<String, Object> beanMap = new HashMap<>();
+    private String path = "applicationContext.xml";
 
-    public ClassPathXmlApplicationContext() {
+    public ClassPathXmlApplicationContext(){
+        this("applicationContext.xml");
+    }
+
+    public ClassPathXmlApplicationContext(String path) {
+        if(StringUtil.isEmpty(path)){
+            throw new RuntimeException("IOC容器 获取错误");
+        }
         try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("applicationContext.xml");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
             //1.创建DocumentBuilderFactory
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             //2.创建DocumentBuilder对象
