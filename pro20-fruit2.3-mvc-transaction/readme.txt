@@ -54,6 +54,10 @@ review:
      - ThreadLocal
      - ConnUtil
      - BaseDAO
+         保证原子性：例如，转账，都成功了才算成功
+         多个DAO对象，在多个DAO事务当中，connection要共享，引入ThreadLocal
+         将事务提交回滚操作，用监听器完成，只有当所有的操作都完成才提交，反之，则回滚
+            将内部的异常，并封装，抛出，
 
    2) ThreadLocal
      - get() , set(obj)
@@ -94,7 +98,6 @@ review:
     8) HttpSessionActivationListener - 监听某个对象在Session域中的序列化和反序列化
 
 4. ServletContextListener的应用 - ContextLoaderListener
-
 
 
 

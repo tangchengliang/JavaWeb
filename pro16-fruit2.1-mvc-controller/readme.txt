@@ -1,5 +1,5 @@
 总结：
-    1.最初做法，一个请求对应一个Servlet，导致Servl太多
+    1.最初做法，一个请求对应一个Servlet，导致Servlet太多
     2.把请求都对应一个FruitServlet，通过operate的值来决定调用FruitServlet中哪一个方法
         switch-case, 如果响应太多----->多个case
     3.解决switch-case
