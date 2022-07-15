@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--可以检查格式-->
+<!DOCTYPE beans [
+    <!ELEMENT beans (bean*)>
+    <!ELEMENT bean (property*)>
+    <!ELEMENT property (#PCDATA)>
+
+    <!ATTLIST bean id ID #REQUIRED>
+    <!ATTLIST bean class CDATA #IMPLIED>
+    <!ATTLIST property name CDATA #IMPLIED>
+    <!ATTLIST property ref IDREF #IMPLIED>
+]>
+
+<beans>
+    <bean id="userBasicDAO" class="com.tcl.qqzone.dao.impl.UserBasicDAOImpl"/>
+    <bean id="topicDAO" class="com.tcl.qqzone.dao.impl.TopicDAOImpl"/>
+    <bean id="replyDAO" class="com.tcl.qqzone.dao.impl.ReplyDAOImpl"/>
+    <bean id="hostReplyDAO" class="com.tcl.qqzone.dao.impl.HostReplyDAOImpl"/>
+
+    <bean id="userBasicService" class="com.tcl.qqzone.service.impl.UserBasicServiceImpl">
+<!--        property表示属性: name 表示属性名; ref 表示引用其它bean的id值-->
+        <property name="userBasicDAO" ref="userBasicDAO"/>
+    </bean>
+<!--    给fruit发请求，就要用FruitController容器处理-->
+    <bean id="topicService" class="com.tcl.qqzone.service.impl.TopicServiceImpl">
+        <property name="topicDAO" ref="topicDAO"/>
+        <property name="replyService" ref="replyService"/>
+        <property name="userBasicService" ref="userBasicService"/>
+    </bean>
+
+    <bean id="replyService" class="com.tcl.qqzone.service.impl.ReplyServiceImpl">
+        <property name="replyDAO" ref="replyDAO"/>
+        <property name="hostReplyService" ref="hostReplyService"/>
+        <property name="userBasicService" ref="userBasicService"/>
+    </bean>
+
+    <bean id="hostReplyService" class="com.tcl.qqzone.service.impl.HostReplyServiceImpl">
+        <property name="hostReplyDAO" ref="hostReplyDAO"/>
+    </bean>
+
+
+    <bean id="user" class="com.tcl.qqzone.controller.UserController">
+        <property name="userBasicService" ref="userBasicService"/>
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+    <bean id="topic" class="com.tcl.qqzone.controller.TopicController">
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+    <bean id="reply" class="com.tcl.qqzone.controller.ReplyController">
+        <property name="replyService" ref="replyService"/>
+    </bean>
+
+
+    <bean id="page" class="com.tcl.myssm.myspringmvc.PageController"/>
+</beans>
+
+
+
+
+
+
+
+<!--
+1.概念
+    HTML :超文本标记语言
+    XML : 可扩展的标记语言   <hello><hello/> 标签可自定义
+    HTML是XML的一个子集
+2.XML包含三个部分
+    1）XML声明 ，必须在第一行声明
+    2）DTD文档类型定义
+    3）XML正文
+-->
