@@ -36,4 +36,11 @@ public class ReplyController {
         // 因此，重定向
         return "redirect:topic.do?operate=topicDetail&id="+topicId;
     }
+
+    public String delReply(Integer replyId, Integer topicId){
+        replyService.delReply(replyId);
+
+        // 删除完之后，到详情页面
+        return "redirect:topic.do?operate=topicDetail&id="+topicId;
+    }
 }

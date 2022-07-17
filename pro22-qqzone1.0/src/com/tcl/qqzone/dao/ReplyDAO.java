@@ -14,4 +14,7 @@ public interface ReplyDAO {
 
     // 删除回复
     void deleteReply(Integer id);
+
+    // 根据ID获取指定的Reply
+    Reply getReply(Integer id);
 }

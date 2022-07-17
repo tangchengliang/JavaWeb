@@ -44,4 +44,19 @@ public class ReplyServiceImpl implements ReplyService {
     public void addReply(Reply reply) {
         replyDAO.addReply(reply);
     }
+
+    @Override
+    public void delReply(Integer replyId) {
+//        如果需要删除主表数据，需要首先删除子表数据
+        //1. 根据ID获取Reply
+        Reply reply = replyDAO.getReply(replyId);
+        if(reply!=null){
+            //2. 如果有关联的hostReply，先删除hostReply
+            if(reply.getHostReply()!=null){
+                hostReplyService.delHostReply(reply.getHostReply().getId());
+            }
+            //3. 删除reply
+            replyDAO.deleteReply(replyId);
+        }
+    }
 }
